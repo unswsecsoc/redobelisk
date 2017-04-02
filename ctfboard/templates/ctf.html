@@ -1,0 +1,35 @@
+{% include "base.html" %}
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ ctf.name }}</h1>
+            <p>
+                
+            </p>
+        </div>
+    </div
+     <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                  <thead>
+    <tr>
+      <th>Level Name</th>
+      <th># of solves</th>
+      <th>Points</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+
+  <tbody>
+{% for level, solves in ctflevels %}
+    <tr>
+        <td><a href="/solution/{{ level.id }}">{{ level.name }}</a></td>
+        <td>{{ solves }}</td>
+        <td>{{ level.points }}</td>
+        <td>{% for tag in level.tags.names %}<button type="button" class="btn btn-default btn-xs">{{tag}}</button> {% endfor %}</td>
+    <tr>
+        {% endfor %}
+  </table>
+        </div>
+    </div>
+</div>

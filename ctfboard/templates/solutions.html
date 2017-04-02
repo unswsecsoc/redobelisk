@@ -1,0 +1,29 @@
+{% include "base.html" %}
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ ctflevel.name }} from {{ ctflevel.ctf.name }} </h1>
+           {% if solutions %} 
+            <h3>Flag: {{ ctflevel.flag }}</h3>
+            {% endif %}
+            {% if ctflevel.tags %}
+              {% for tag in ctflevel.tags.names %}
+                <button type="button" class="btn btn-default btn-xs">{{tag}}</button>
+              {% endfor %}
+            {% endif %}
+            <p>
+                
+            </p>
+        </div>
+    </div
+     <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+{% for solution in solutions %}
+<h3>{{ solution.user.user.username }}'s </h3>
+<pre>{{ solution.text }}</pre>
+<hr>
+        {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+{% include "base.html" %}
+
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Scoreboard</h1>
+            <h4>There is no hunting like the hunting of man, and those who have hunted armed men long enough and liked it, never care for anything else thereafter.</em><br>
+-- Ernest Hemmingway</h4>
+<br>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+    <tr>
+        <th>username</th>
+        <th>score</th>
+    </tr>
+    {% for userprofile,score in all_users %}
+    <tr>
+        <td>{{ userprofile.user.username }}</td>
+        <td>{{ score }}</td>
+    </tr>
+        {% endfor %}
+        </table>
+        </div>
+    </div>
+</div>
+
+ </body></html>

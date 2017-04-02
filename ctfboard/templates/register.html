@@ -1,0 +1,59 @@
+{% load static %}
+<html><body>
+<link href="{% static "style.css" %}" rel="stylesheet"></link> 
+
+
+<br><br><br>
+
+{% if msg %}
+{{ msg }}
+{% endif %}
+
+<pre>
+
+            _.-----.....___                                                
+         .-":     .- .     """"-._                                         
+       .: ..'         '           "-._      PLEASE ONLY REGISTER USING OS9 ON AN ORIGINAL IMAC      
+       :|"|:     :     '              "-.                                  
+      .:| |:          ' -  .             "-.                               
+      :|  |:     :    '- '                 \"-.                            
+     .:| |:'          '    .'"-.            "-\"-.                         
+     :|  |:      :    '- -'.    '.             "-,"-.                      
+     :|  |:          '       "    :               "-."-.                   
+    .:| .::     :    '        '   '.                 "-.".                 
+    :|  |:'          '         `   :                    "-:.               
+    :|  |:      :    '           -=-                        '.             
+    :|  |:           '              '                         '.           
+   .:| .':      :    '                :    - -               _ -'.         
+   :|  |:'          '                 :- -" " "-      _  -        '.       
+   :|  |:      :    '                 :       . -  "                '.     
+   :| .|:           '               . '  . -                    _ - "'.    
+  .:' |.:      :    '              . -                    _ - "       '.   
+  :|  |:'           '         . -                   _ - "               :  
+  :|  |:       :    '    . -                  _ - "                     ': 
+ .:| .':             ' '                _ - "                            '.
+ :.' |.:      :                   _ - "                                   :
+ :|  |:'                    _ - "                                         :
+ :'--':       :       _ - "               ____                     _  _  : 
+.:    :         _ - "                 _==:____"-.               .'      .' 
+:""--.: _ . - "                   _.-"           :              '. _  _.'  
+:    :'"                       .-" .__.       ::  :                   .'   
+:    :                        .' O |||| [] == LJ  :                 .'     
+:==  :                        :    '""'    ==  _.-'             _.-"       
+'.   :                        '. O    o o  _.-"             _.-"           
+ :   '.                         :      _.-"             _.-"               
+ :    :                          `._.-"             _.-"                   
+  '-._:.                                        _.-"                       
+     /""'-._                                _.-"                           
+     "-._/_.'"----....___________________.-"/grp                           
+         "                               """     
+</pre>                          
+<br><br><br> <form action="/register" method="post"> {% csrf_token %}
+Username: {{ form.username }} <br>
+Password: {{ form.password }}   <br>
+email: {{ form.email }}   <br>
+secret: {{ form.secret }}   <br>
+cse login username: {{ form.cseaccountname }}   <br>
+   </div>
+     <input type="submit" value="submit">
+   </div> </form></body></html>

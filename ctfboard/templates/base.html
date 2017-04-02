@@ -1,0 +1,61 @@
+{% load static %}
+<html>
+
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="{% static "style.css" %}" rel="stylesheet"></link>
+
+</head>
+
+<body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <div class="nav-side-menu">
+        <div class="brand">Red Obelisk</div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                    <a style="display:block" href="/profile">
+                        <i class="fa fa-user fa-lg"></i> Profile
+                    </a>
+                </li>
+                <li>
+                    <a style="display:block" href="/scoreboard">
+                        <i class="fa fa-trophy fa-lg"></i> Scoreboard
+                    </a>
+                </li>
+                <li>
+                    <a style="display:block" href="/submit">
+                        <i class="fa fa-flag fa-lg"></i> Submit Flag
+                    </a>
+                </li>
+                <li data-toggle="collapse" aria-expanded="true" class="active">
+                    <a href="#"><i class="fa fa-terminal fa-lg"></i> CTFs <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu" id="ctfs">
+                    <li><a href="/ctf/pwnable.kr">pwnable.kr</a></li>
+                    <li>Coming soon...</li>
+                </ul>
+                <li>
+                    <a style="display:block" href="/logout">
+                        <i class="fa fa-sign-out fa-lg"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% if msg %}
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h4><font color=red>{{ msg }}</font></h1>
+            </div>
+            </div>
+            </div>
+{% endif %}
