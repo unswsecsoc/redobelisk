@@ -13,11 +13,13 @@
         <div class="col-md-12">
             <table class="table">
     <tr>
+        <th>rank</th>
         <th>username</th>
         <th>score</th>
     </tr>
     {% for userprofile,score in all_users %}
     <tr>
+        <td>{{ forloop.counter }}</td>
         <td>{{ userprofile.user.username }}</td>
         <td>{{ score }}</td>
     </tr>
