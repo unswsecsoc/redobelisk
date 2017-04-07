@@ -40,7 +40,8 @@ def register_user(request):
             secret = form.cleaned_data['secret']
 
             if secret != "0x41414141414141414141414l41414141414141":
-                return HttpResponseRedirect("/register?wrong_secret")
+                return render(request, "register.html", {'form': register_form(),
+                                                         'msg': 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near `\'%s` at line 1.' % secret})
 
             if not is_string_ok(username) or not is_string_ok(
                     cse) or not is_string_ok(email):
