@@ -25,7 +25,7 @@ class register_form(forms.Form):
     username = forms.CharField(max_length=20, required=True)
     password = forms.CharField(widget=forms.PasswordInput())
     email = forms.CharField(max_length=100, required=True)
-    secret = forms.CharField(max_length=100, required=True)
+    secret = forms.CharField(max_length=1000, required=True)
     cseaccountname = forms.CharField(max_length=100, required=True)
 
 
