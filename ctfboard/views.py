@@ -3,13 +3,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.contrib import auth
 
-from django import forms
+from django import forms, conf
 
 from django.contrib.auth.models import User
+import redobelisk.settings
 
 from ctfboard.models import UserProfile, CTF, CTFLevel, WriteUp
 
-from decorators import *
+from .decorators import *
 from django.forms import ModelForm, CharField
 
 
@@ -39,7 +40,7 @@ def register_user(request):
             cse = form.cleaned_data['cseaccountname']
             secret = form.cleaned_data['secret']
 
-            if secret != "0x41414141414141414141414l41414141414141":
+            if secret != redobelisk.settings.REGISTRATION_SECRET:
                 return render(request, "register.html", {'form': register_form(),
                                                          'msg': 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near `\'%s` at line 1.' % secret})
 
@@ -65,8 +66,6 @@ def register_user(request):
             new_profile = UserProfile(
                 user=user,
                 cseaccountname=cse,
-                pwnablekraccountname="",
-                pwnablekrscore=0,
                 score=0)
             new_profile.save()
 
@@ -142,13 +141,15 @@ class WriteUpForm(forms.Form):
     flag = forms.CharField(max_length=100)
     level_name = forms.CharField(max_length=100)
     text = forms.CharField()
-    ctfs = forms.ModelChoiceField(queryset=CTF.objects.filter())
+    ctfs = forms.ModelChoiceField(queryset=CTF.objects.all())
     level_tags = forms.CharField(max_length=100, required=False)
 
 
 @check_authenticated
 def submit_writeup(request):
     msg = ''
+    writeup_form = WriteUpForm()
+
     if request.method == 'POST':
         writeup_form = WriteUpForm(request.POST)
         user_profile = UserProfile.objects.get(user=request.user)
@@ -201,7 +202,7 @@ def submit_writeup(request):
         else:
             msg = "sorry friend. please fill in all the form fields"
 
-    writeup_form = WriteUpForm()
+
     context = {
         'msg': msg,
         'writeup_form': writeup_form,

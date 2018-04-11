@@ -126,6 +126,7 @@ USE_L10N = True
 USE_TZ = True
 
 
+REGISTRATION_SECRET = os.getenv("REGO_SECRET", "0x41414141414141414141414l41414141414141")
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 

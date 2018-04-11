@@ -37,7 +37,11 @@
                     <a href="#"><i class="fa fa-terminal fa-lg"></i> CTFs <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu" id="ctfs">
-                    <li><a href="/ctf/pwnable.kr">pwnable.kr</a></li>
+                    {% load tags %}
+                    {% get_ctfs request as ctfs %}
+                    {% for ctf in ctfs %}
+                    <li><a href="{% url "ctflevels" ctf.name %}">{{ctf.name}}</a></li>
+                    {% endfor %}
                     <li>Coming soon...</li>
                 </ul>
                 <li>
@@ -49,13 +53,21 @@
         </div>
     </div>
 
-{% if msg %}
+{% if writeup_form.errors %}
 <div class="container" id="main">
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <h4><font color=red>{{ msg }}</font></h1>
+    {% for field in writeup_form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
             </div>
-            </div>
-            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in writeup_form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+    </div>
+</div>
 {% endif %}

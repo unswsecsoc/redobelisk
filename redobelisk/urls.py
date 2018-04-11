@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'^scoreboard$', views.scoreboard),
     url(r'^submit$', views.submit_writeup),
     url(r'^profile$', views.profile),
-    url(r'^ctf/(?P<ctfname>[A-z0-9.]+)[/]*$', views.ctflevels),
+    url(r'^ctf/(?P<ctfname>[A-z0-9.]+)[/]*$', views.ctflevels, name="ctflevels"),
     url(r'^solution/(?P<ctflevelid>[0-9]+)[/]*$', views.solution),
 ]

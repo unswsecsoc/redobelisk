@@ -10,6 +10,7 @@ def check_authenticated(function):
             else:
                 raise
         except:
+            raise
             return HttpResponseRedirect("/login")
     wrap.__doc__ = function.__doc__
     wrap.__name__ = function.__name__

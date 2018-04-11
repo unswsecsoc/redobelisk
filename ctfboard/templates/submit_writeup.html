@@ -12,10 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <form action="" method="post" id="submit_form"> {% csrf_token %}
-                <label>CTF</label>
-                <select class="form-controls" id="id_ctfs" name="ctfs" required>
-<option value="1" selected>pwnable.kr</option>
-</select>
+              <label for="{{ writeup_form.id_for_ctfs }}">CTF</label>
+                {{ writeup_form.ctfs }}
                 <label>Level name</label>
                 <input id="id_levelname" maxlength="100" name="level_name" type="text" required="">
                 <label>Flag</label>
