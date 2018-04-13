@@ -53,6 +53,18 @@
         </div>
     </div>
 
+{% if msg %}
+<div class="container" id="main">
+    <div class="row">
+      <div class="alert alert-danger">
+          <strong>{{ msg|escape }}</strong>
+      </div>
+    </div>
+</div>
+
+
+{% endif %}
+
 {% if writeup_form.errors %}
 <div class="container" id="main">
     <div class="row">
