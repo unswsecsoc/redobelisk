@@ -161,7 +161,7 @@ def submit_writeup(request):
             level_tags = writeup_form.cleaned_data['level_tags']
             ctf = CTF.objects.get(name=writeup_form.cleaned_data['ctfs'])
 
-            level = CTFLevel.objects.filter(name=level_name)
+            level = CTFLevel.objects.filter(name=level_name, ctf=ctf)
 
             if level:
                 level = level[0]
