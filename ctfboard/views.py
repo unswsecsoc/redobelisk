@@ -9,10 +9,10 @@ from django.contrib.auth.models import User
 import redobelisk.settings
 
 from ctfboard.models import UserProfile, CTF, CTFLevel, WriteUp
+from MarkdownRenderer import MarkdownRenderer
 
 from .decorators import *
 from django.forms import ModelForm, CharField
-
 
 def is_string_ok(string):
     for x in string:
@@ -115,7 +115,9 @@ def solution(request, ctflevelid):
                 user=request.user)):
         msg = "Sorry friend, you haven't completed this level yet :<"
         solutions = []
-
+    mdRenderer = MarkdownRenderer()
+    for solution in solutions:
+        solution.text = mdRenderer.render(solution.text,plus=True)
     context = {'msg': msg, 'solutions': solutions, 'ctflevel': ctflevel}
     return render(request, 'solutions.html', context)
 
