@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>{{ ctflevel.name }} from {{ ctflevel.ctf.name }} </h1>
-           {% if solutions %} 
+           {% if solutions %}
             <h3>Flag: {{ ctflevel.flag }}</h3>
             {% endif %}
             {% if ctflevel.tags %}
@@ -12,7 +12,7 @@
               {% endfor %}
             {% endif %}
             <p>
-                
+
             </p>
         </div>
     </div
@@ -21,7 +21,7 @@
             <table class="table">
 {% for solution in solutions %}
 <h3>{{ solution.user.user.username }}'s </h3>
-<pre>{{ solution.text }}</pre>
+<div class="md-container">{{ solution.text | safe }}</div>
 <hr>
         {% endfor %}
         </div>

@@ -21,3 +21,5 @@ six==1.10.0
 traitlets==4.3.2
 wcwidth==0.1.7
 angr==6.7.3.26
+Pygments==2.2.0
+misaka==2.1.0
